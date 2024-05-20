@@ -24,17 +24,11 @@ app.get('/api/hello', function (req, res) {
   res.json({ greeting: 'hello API' });
 });
 
-app.get('/api/whoami', function(req, res){
-  var ipAddress = req.ip;
-
-    // Get preferred language from request headers
-    var language = req.headers["accept-language"];
-
-    // Get software information from request headers
-    var software = req.headers["user-agent"];
-
-    // Send JSON response with the collected data
-    res.json({ ipaddress: ipAddress, language: language, software: software });
+app.get('/api/whoami',(req,res) =>{
+  let yourIP = req.ip;
+  let yourLanguage = req.header("accept-language");
+  let yourSoftware = req.header("user-agent");
+  res.json({ipaddress : yourIP, language : yourLanguage, software : yourSoftware});
 });
 
 // listen for requests :)
